@@ -1,0 +1,33 @@
+h2{
+  text-align: center;
+  font-size: 40px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+button {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Define hover effect for the button */
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Define active (click) effect for the button */
+  button:active {
+    background-color: #1c6da8;
+  }
