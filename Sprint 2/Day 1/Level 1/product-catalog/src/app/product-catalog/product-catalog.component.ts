@@ -1,42 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-catalog',
   templateUrl: './product-catalog.component.html',
   styleUrls: ['./product-catalog.component.css']
 })
-export class ProductCatalogComponent {
-  products: Product[] = [
-    {
-      name: 'Product 1',
-      description: 'Description',
-      price: 10,
-      image: 'product1.jpg',
-    },
-    {
-      name: 'Product 2',
-      description: 'Description',
-      price: 10,
-      image: 'product2.jpg',
-    },
-    {
-      name: 'Product 3',
-      description: 'Description',
-      price: 30,
-      image: 'product3.jpg',
-    },
-    {
-      name: 'Product 4',
-      description: 'Description',
-      price: 40,
-      image: 'product4.jpg',
-    }
-  ];
+export class ProductCatalogComponent implements OnInit{
+  products: Product[] = [];
+  cart: Product[] = [];
+  constructor(private productService: ProductService){  }
 
+  ngOnInit() {
+    this.products=this.productService.getProducts();
+  }
+
+  showDetails(product: Product) {
+    alert('Details for ' + product.title);
+  }
+
+  addToCart(product: Product) {
+    this.cart.push(product);
+    alert('Added ' + product.title + ' to the cart');
+    console.log('Cart Contents:', this.cart);
+  }
+
+  toggleFavorite(product: any) {
+    product.isFavorite = !product.isFavorite;
+    if(product.isFavorite){
+      alert(`${product.title} added to Favorites`)
+    }
+    else{
+      alert(`${product.title} removed from Favorites`)
+    }
+    
+  }
 }
 
 interface Product {
-  name: string;
+  title: string;
   description: string;
   price: number;
   image: string;
