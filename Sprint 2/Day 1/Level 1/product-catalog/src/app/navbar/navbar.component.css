@@ -1,0 +1,11 @@
+nav{
+    margin-bottom: 50px;
+    border-bottom: 2px solid black;
+}
+img{
+    width: 100%;
+}
+
+nav>div>a{
+    width: 100px;
+}
