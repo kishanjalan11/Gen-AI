@@ -1,0 +1,47 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+        <small *ngIf="userForm.get('name').hasError('required')"> Name is required</small>
+        <small *ngIf="userForm.get('name').hasError('pattern')"> Name can not contain special characters</small>
+    </div>
+
+    <div>
+        <label for="email" id="email">Email:</label>
+        <input type="text" id="email" formControlName="email">
+        <small *ngIf="userForm.get('email').hasError('required')"> Email is required</small>
+        <small *ngIf="userForm.get('email').hasError('pattern')"> Invalid Email Format</small>
+    </div>
+    
+    <div>
+        <label for="password" id="password">Password:</label>
+        <input type="password" id="password" formControlName="password">
+        <small *ngIf="userForm.get('password').hasError('required')"> Password is required</small>
+        <small *ngIf="userForm.get('password').hasError('minlength')"> Password must be min 8 character</small>
+    </div>
+    
+    <div>
+        <label for="age" id="age">Age:</label>
+        <input type="text" id="age" formControlName="age">
+        <small *ngIf="userForm.get('age').hasError('required')"> Age is required</small>
+        <small *ngIf="userForm.get('age').hasError('min')"> Age must be atleast 18</small>
+        <small *ngIf="userForm.get('age').hasError('max')">Age must be less than 60</small>
+    </div>
+    
+    <div>
+        <label for="country">Country:</label>
+        <select name="country" id="country" formControlName="country">
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+        </select>
+        <small *ngIf="userForm.get('country').hasError('required')"> Country is required</small>
+    </div>
+    
+    <div>
+        <label for="acceptance">Terms & Conditions:</label>
+        <input type="checkbox" name="acceptance" id="acceptance" formControlName="acceptance">
+        <small *ngIf="userForm.get('acceptance').hasError('required')"> You must accept the T & C</small>
+    </div>
+    
+    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>
